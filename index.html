@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Periodic Elements Info</title>
+  <meta charset="UTF-8" />
+  <title>Modern Periodic Table</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #1a001a, #330033, #660022, #990000);
       color: #fff;
-      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 40px;
+      padding: 30px;
     }
 
-    .periodic-grid {
+    h1 {
+      color: #ff4081;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+
+    .periodic-table {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 15px;
-      max-width: 800px;
-      width: 100%;
+      grid-template-columns: repeat(18, 60px);
+      grid-template-rows: repeat(7, 60px);
+      gap: 6px;
     }
 
-    .element-box {
+    .element {
       position: relative;
       background: #ffffff22;
       border: 2px solid #ff4081;
-      border-radius: 10px;
+      border-radius: 8px;
       text-align: center;
-      padding: 20px 10px;
-      cursor: default;
-      transition: transform 0.2s;
+      padding-top: 8px;
+      font-size: 14px;
     }
 
-    .element-box:hover {
-      transform: scale(1.05);
-    }
-
-    .symbol {
-      font-size: 24px;
+    .element .symbol {
+      font-size: 18px;
       font-weight: bold;
       color: #fff;
     }
@@ -48,7 +47,7 @@
     .tooltip {
       display: none;
       position: absolute;
-      top: 110%;
+      top: 70px;
       left: 50%;
       transform: translateX(-50%);
       width: 180px;
@@ -56,26 +55,39 @@
       color: #fff;
       padding: 12px;
       border-radius: 8px;
+      font-size: 13px;
       z-index: 10;
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       text-align: left;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
-    .element-box:hover .tooltip {
+    .element:hover .tooltip {
       display: block;
     }
 
-    .tooltip strong {
-      color: #ff4081;
-    }
+    /* Specific positions */
+    .H     { grid-column: 1;  grid-row: 1; }
+    .He    { grid-column: 18; grid-row: 1; }
+    .Li    { grid-column: 1;  grid-row: 2; }
+    .Be    { grid-column: 2;  grid-row: 2; }
+    .B     { grid-column: 13; grid-row: 2; }
+    .C     { grid-column: 14; grid-row: 2; }
+    .N     { grid-column: 15; grid-row: 2; }
+    .O     { grid-column: 16; grid-row: 2; }
+    .F     { grid-column: 17; grid-row: 2; }
+    .Ne    { grid-column: 18; grid-row: 2; }
+
+    /* Add more using correct group/period mapping */
   </style>
 </head>
 <body>
 
-  <div class="periodic-grid">
-    <!-- ✅ Add more elements below like this -->
-    <div class="element-box">
+  <h1>Modern Periodic Table</h1>
+
+  <div class="periodic-table">
+
+    <!-- Hydrogen -->
+    <div class="element H">
       <div class="symbol">H</div>
       <div class="tooltip">
         <strong>Hydrogen</strong><br>
@@ -86,7 +98,8 @@
       </div>
     </div>
 
-    <div class="element-box">
+    <!-- Helium -->
+    <div class="element He">
       <div class="symbol">He</div>
       <div class="tooltip">
         <strong>Helium</strong><br>
@@ -97,7 +110,8 @@
       </div>
     </div>
 
-    <div class="element-box">
+    <!-- Lithium -->
+    <div class="element Li">
       <div class="symbol">Li</div>
       <div class="tooltip">
         <strong>Lithium</strong><br>
@@ -108,7 +122,8 @@
       </div>
     </div>
 
-    <div class="element-box">
+    <!-- Beryllium -->
+    <div class="element Be">
       <div class="symbol">Be</div>
       <div class="tooltip">
         <strong>Beryllium</strong><br>
@@ -118,6 +133,79 @@
         Category: Alkaline earth metal
       </div>
     </div>
+
+    <!-- Boron -->
+    <div class="element B">
+      <div class="symbol">B</div>
+      <div class="tooltip">
+        <strong>Boron</strong><br>
+        Atomic No: 5<br>
+        Group: 13<br>
+        Period: 2<br>
+        Category: Metalloid
+      </div>
+    </div>
+
+    <!-- Carbon -->
+    <div class="element C">
+      <div class="symbol">C</div>
+      <div class="tooltip">
+        <strong>Carbon</strong><br>
+        Atomic No: 6<br>
+        Group: 14<br>
+        Period: 2<br>
+        Category: Non-metal
+      </div>
+    </div>
+
+    <!-- Nitrogen -->
+    <div class="element N">
+      <div class="symbol">N</div>
+      <div class="tooltip">
+        <strong>Nitrogen</strong><br>
+        Atomic No: 7<br>
+        Group: 15<br>
+        Period: 2<br>
+        Category: Non-metal
+      </div>
+    </div>
+
+    <!-- Oxygen -->
+    <div class="element O">
+      <div class="symbol">O</div>
+      <div class="tooltip">
+        <strong>Oxygen</strong><br>
+        Atomic No: 8<br>
+        Group: 16<br>
+        Period: 2<br>
+        Category: Non-metal
+      </div>
+    </div>
+
+    <!-- Fluorine -->
+    <div class="element F">
+      <div class="symbol">F</div>
+      <div class="tooltip">
+        <strong>Fluorine</strong><br>
+        Atomic No: 9<br>
+        Group: 17<br>
+        Period: 2<br>
+        Category: Halogen
+      </div>
+    </div>
+
+    <!-- Neon -->
+    <div class="element Ne">
+      <div class="symbol">Ne</div>
+      <div class="tooltip">
+        <strong>Neon</strong><br>
+        Atomic No: 10<br>
+        Group: 18<br>
+        Period: 2<br>
+        Category: Noble gas
+      </div>
+    </div>
+
   </div>
 
 </body>
