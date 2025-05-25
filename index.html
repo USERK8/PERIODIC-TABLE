@@ -28,7 +28,7 @@
   #periodic-grid {
     display: grid;
     grid-template-columns: repeat(18, 60px);
-    grid-auto-rows: 60px;
+    grid-template-rows: repeat(10, 60px);
     gap: 5px;
   }
   .element {
@@ -44,8 +44,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: visible; /* Important: so tooltip can overflow */
-    z-index: 1; /* base */
+    overflow: visible;
+    z-index: 1;
   }
   .element .symbol {
     font-size: 22px;
@@ -57,7 +57,7 @@
   }
   .tooltip {
     position: absolute;
-    top: -80px;  /* position above the element box */
+    top: -80px;
     left: 50%;
     transform: translateX(-50%);
     width: 180px;
@@ -73,7 +73,7 @@
     opacity: 0;
     transition: opacity 0.25s ease;
     box-shadow: 0 0 15px #ff4081bb;
-    z-index: 1000;  /* on top */
+    z-index: 1000;
     user-select: text;
     white-space: normal;
   }
@@ -89,29 +89,699 @@
 
 <div id="periodic-grid">
 
+  <!-- Period 1 -->
   <div class="element" style="grid-column: 1; grid-row: 1;">
     <div class="symbol">H</div>
     <div class="number">1</div>
-    <div class="tooltip">
-      <strong>Hydrogen</strong><br />
-      Atomic Number: 1<br />
-      Row: 1, Column: 1
-    </div>
+    <div class="tooltip"><strong>Hydrogen</strong><br>Atomic Number: 1<br>Period: 1, Group: 1</div>
   </div>
-
   <div class="element" style="grid-column: 18; grid-row: 1;">
     <div class="symbol">He</div>
     <div class="number">2</div>
-    <div class="tooltip">
-      <strong>Helium</strong><br />
-      Atomic Number: 2<br />
-      Row: 1, Column: 18
-    </div>
+    <div class="tooltip"><strong>Helium</strong><br>Atomic Number: 2<br>Period: 1, Group: 18</div>
   </div>
 
-  <!-- Add more elements similarly -->
+  <!-- Period 2 -->
+  <div class="element" style="grid-column: 1; grid-row: 2;">
+    <div class="symbol">Li</div>
+    <div class="number">3</div>
+    <div class="tooltip"><strong>Lithium</strong><br>Atomic Number: 3<br>Period: 2, Group: 1</div>
+  </div>
+  <div class="element" style="grid-column: 2; grid-row: 2;">
+    <div class="symbol">Be</div>
+    <div class="number">4</div>
+    <div class="tooltip"><strong>Beryllium</strong><br>Atomic Number: 4<br>Period: 2, Group: 2</div>
+  </div>
+  <div class="element" style="grid-column: 13; grid-row: 2;">
+    <div class="symbol">B</div>
+    <div class="number">5</div>
+    <div class="tooltip"><strong>Boron</strong><br>Atomic Number: 5<br>Period: 2, Group: 13</div>
+  </div>
+  <div class="element" style="grid-column: 14; grid-row: 2;">
+    <div class="symbol">C</div>
+    <div class="number">6</div>
+    <div class="tooltip"><strong>Carbon</strong><br>Atomic Number: 6<br>Period: 2, Group: 14</div>
+  </div>
+  <div class="element" style="grid-column: 15; grid-row: 2;">
+    <div class="symbol">N</div>
+    <div class="number">7</div>
+    <div class="tooltip"><strong>Nitrogen</strong><br>Atomic Number: 7<br>Period: 2, Group: 15</div>
+  </div>
+  <div class="element" style="grid-column: 16; grid-row: 2;">
+    <div class="symbol">O</div>
+    <div class="number">8</div>
+    <div class="tooltip"><strong>Oxygen</strong><br>Atomic Number: 8<br>Period: 2, Group: 16</div>
+  </div>
+  <div class="element" style="grid-column: 17; grid-row: 2;">
+    <div class="symbol">F</div>
+    <div class="number">9</div>
+    <div class="tooltip"><strong>Fluorine</strong><br>Atomic Number: 9<br>Period: 2, Group: 17</div>
+  </div>
+  <div class="element" style="grid-column: 18; grid-row: 2;">
+    <div class="symbol">Ne</div>
+    <div class="number">10</div>
+    <div class="tooltip"><strong>Neon</strong><br>Atomic Number: 10<br>Period: 2, Group: 18</div>
+  </div>
 
+  <!-- Period 3 -->
+  <div class="element" style="grid-column: 1; grid-row: 3;">
+    <div class="symbol">Na</div>
+    <div class="number">11</div>
+    <div class="tooltip"><strong>Sodium</strong><br>Atomic Number: 11<br>Period: 3, Group: 1</div>
+  </div>
+  <div class="element" style="grid-column: 2; grid-row: 3;">
+    <div class="symbol">Mg</div>
+    <div class="number">12</div>
+    <div class="tooltip"><strong>Magnesium</strong><br>Atomic Number: 12<br>Period: 3, Group: 2</div>
+  </div>
+  <div class="element" style="grid-column: 13; grid-row: 3;">
+    <div class="symbol">Al</div>
+    <div class="number">13</div>
+    <div class="tooltip"><strong>Aluminum</strong><br>Atomic Number: 13<br>Period: 3, Group: 13</div>
+  </div>
+  <div class="element" style="grid-column: 14; grid-row: 3;">
+    <div class="symbol">Si</div>
+    <div class="number">14</div>
+    <div class="tooltip"><strong>Silicon</strong><br>Atomic Number: 14<br>Period: 3, Group: 14</div>
+  </div>
+  <div class="element" style="grid-column: 15; grid-row: 3;">
+    <div class="symbol">P</div>
+    <div class="number">15</div>
+    <div class="tooltip"><strong>Phosphorus</strong><br>Atomic Number: 15<br>Period: 3, Group: 15</div>
+  </div>
+  <div class="element" style="grid-column: 16; grid-row: 3;">
+    <div class="symbol">S</div>
+    <div class="number">16</div>
+    <div class="tooltip"><strong>Sulfur</strong><br>Atomic Number: 16<br>Period: 3, Group: 16</div>
+  </div>
+  <div class="element" style="grid-column: 17; grid-row: 3;">
+    <div class="symbol">Cl</div>
+    <div class="number">17</div>
+    <div class="tooltip"><strong>Chlorine</strong><br>Atomic Number: 17<br>Period: 3, Group: 17</div>
+  </div>
+  <div class="element" style="grid-column: 18; grid-row: 3;">
+    <div class="symbol">Ar</div>
+    <div class="number">18</div>
+    <div class="tooltip"><strong>Argon</strong><br>Atomic Number: 18<br>Period: 3, Group: 18</div>
+  </div>
+
+  <!-- Period 4 -->
+  <div class="element" style="grid-column: 1; grid-row: 4;">
+    <div class="symbol">K</div>
+    <div class="number">19</div>
+    <div class="tooltip"><strong>Potassium</strong><br>Atomic Number: 19<br>Period: 4, Group: 1</div>
+  </div>
+  <div class="element" style="grid-column: 2; grid-row: 4;">
+    <div class="symbol">Ca</div>
+    <div class="number">20</div>
+    <div class="tooltip"><strong>Calcium</strong><br>Atomic Number: 20<br>Period: 4, Group: 2</div>
+  </div>
+
+  <!-- Transition metals 4th period -->
+  <div class="element" style="grid-column: 3; grid-row: 4;">
+    <div class="symbol">Sc</div>
+    <div class="number">21</div>
+    <div class="tooltip"><strong>Scandium</strong><br>Atomic Number: 21<br>Period: 4, Group: 3</div>
+  </div>
+  <div class="element" style="grid-column: 4; grid-row: 4;">
+    <div class="symbol">Ti</div>
+    <div class="number">22</div>
+    <div class="tooltip"><strong>Titanium</strong><br>Atomic Number: 22<br>Period: 4, Group: 4</div>
+  </div>
+  <div class="element" style="grid-column: 5; grid-row: 4;">
+    <div class="symbol">V</div>
+    <div class="number">23</div>
+    <div class="tooltip"><strong>Vanadium</strong><br>Atomic Number: 23<br>Period: 4, Group: 5</div>
+  </div>
+  <div class="element" style="grid-column: 6; grid-row: 4;">
+    <div class="symbol">Cr</div>
+    <div class="number">24</div>
+    <div class="tooltip"><strong>Chromium</strong><br>Atomic Number: 24<br>Period: 4, Group: 6</div>
+  </div>
+  <div class="element" style="grid-column: 7; grid-row: 4;">
+    <div class="symbol">Mn</div>
+    <div class="number">25</div>
+    <div class="tooltip"><strong>Manganese</strong><br>Atomic Number: 25<br>Period: 4, Group: 7</div>
+  </div>
+  <div class="element" style="grid-column: 8; grid-row: 4;">
+    <div class="symbol">Fe</div>
+    <div class="number">26</div>
+    <div class="tooltip"><strong>Iron</strong><br>Atomic Number: 26<br>Period: 4, Group: 8</div>
+  </div>
+  <div class="element" style="grid-column: 9; grid-row: 4;">
+    <div class="symbol">Co</div>
+    <div class="number">27</div>
+    <div class="tooltip"><strong>Cobalt</strong><br>Atomic Number: 27<br>Period: 4, Group: 9</div>
+  </div>
+  <div class="element" style="grid-column: 10; grid-row: 4;">
+    <div class="symbol">Ni</div>
+    <div class="number">28</div>
+    <div class="tooltip"><strong>Nickel</strong><br>Atomic Number: 28<br>Period: 4, Group: 10</div>
+  </div>
+  <div class="element" style="grid-column: 11; grid-row: 4;">
+    <div class="symbol">Cu</div>
+    <div class="number">29</div>
+    <div class="tooltip"><strong>Copper</strong><br>Atomic Number: 29<br>Period: 4, Group: 11</div>
+  </div>
+  <div class="element" style="grid-column: 12; grid-row: 4;">
+    <div class="symbol">Zn</div>
+    <div class="number">30</div>
+    <div class="tooltip"><strong>Zinc</strong><br>Atomic Number: 30<br>Period: 4, Group: 12</div>
+  </div>
+
+  <div class="element" style="grid-column: 13; grid-row: 4;">
+    <div class="symbol">Ga</div>
+    <div class="number">31</div>
+    <div class="tooltip"><strong>Gallium</strong><br>Atomic Number: 31<br>Period: 4, Group: 13</div>
+  </div>
+  <!-- Period 4 continued -->
+<div class="element" style="grid-column: 14; grid-row: 4;">
+  <div class="symbol">Ge</div>
+  <div class="number">32</div>
+  <div class="tooltip"><strong>Germanium</strong><br>Atomic Number: 32<br>Period: 4, Group: 14</div>
 </div>
+<div class="element" style="grid-column: 15; grid-row: 4;">
+  <div class="symbol">As</div>
+  <div class="number">33</div>
+  <div class="tooltip"><strong>Arsenic</strong><br>Atomic Number: 33<br>Period: 4, Group: 15</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 4;">
+  <div class="symbol">Se</div>
+  <div class="number">34</div>
+  <div class="tooltip"><strong>Selenium</strong><br>Atomic Number: 34<br>Period: 4, Group: 16</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 4;">
+  <div class="symbol">Br</div>
+  <div class="number">35</div>
+  <div class="tooltip"><strong>Bromine</strong><br>Atomic Number: 35<br>Period: 4, Group: 17</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 4;">
+  <div class="symbol">Kr</div>
+  <div class="number">36</div>
+  <div class="tooltip"><strong>Krypton</strong><br>Atomic Number: 36<br>Period: 4, Group: 18</div>
+</div>
+
+<!-- Period 5 -->
+<div class="element" style="grid-column: 1; grid-row: 5;">
+  <div class="symbol">Rb</div>
+  <div class="number">37</div>
+  <div class="tooltip"><strong>Rubidium</strong><br>Atomic Number: 37<br>Period: 5, Group: 1</div>
+</div>
+<div class="element" style="grid-column: 2; grid-row: 5;">
+  <div class="symbol">Sr</div>
+  <div class="number">38</div>
+  <div class="tooltip"><strong>Strontium</strong><br>Atomic Number: 38<br>Period: 5, Group: 2</div>
+</div>
+<div class="element" style="grid-column: 3; grid-row: 5;">
+  <div class="symbol">Y</div>
+  <div class="number">39</div>
+  <div class="tooltip"><strong>Yttrium</strong><br>Atomic Number: 39<br>Period: 5, Group: 3</div>
+</div>
+<div class="element" style="grid-column: 4; grid-row: 5;">
+  <div class="symbol">Zr</div>
+  <div class="number">40</div>
+  <div class="tooltip"><strong>Zirconium</strong><br>Atomic Number: 40<br>Period: 5, Group: 4</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 5;">
+  <div class="symbol">Nb</div>
+  <div class="number">41</div>
+  <div class="tooltip"><strong>Niobium</strong><br>Atomic Number: 41<br>Period: 5, Group: 5</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 5;">
+  <div class="symbol">Mo</div>
+  <div class="number">42</div>
+  <div class="tooltip"><strong>Molybdenum</strong><br>Atomic Number: 42<br>Period: 5, Group: 6</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 5;">
+  <div class="symbol">Tc</div>
+  <div class="number">43</div>
+  <div class="tooltip"><strong>Technetium</strong><br>Atomic Number: 43<br>Period: 5, Group: 7</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 5;">
+  <div class="symbol">Ru</div>
+  <div class="number">44</div>
+  <div class="tooltip"><strong>Ruthenium</strong><br>Atomic Number: 44<br>Period: 5, Group: 8</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 5;">
+  <div class="symbol">Rh</div>
+  <div class="number">45</div>
+  <div class="tooltip"><strong>Rhodium</strong><br>Atomic Number: 45<br>Period: 5, Group: 9</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 5;">
+  <div class="symbol">Pd</div>
+  <div class="number">46</div>
+  <div class="tooltip"><strong>Palladium</strong><br>Atomic Number: 46<br>Period: 5, Group: 10</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 5;">
+  <div class="symbol">Ag</div>
+  <div class="number">47</div>
+  <div class="tooltip"><strong>Silver</strong><br>Atomic Number: 47<br>Period: 5, Group: 11</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 5;">
+  <div class="symbol">Cd</div>
+  <div class="number">48</div>
+  <div class="tooltip"><strong>Cadmium</strong><br>Atomic Number: 48<br>Period: 5, Group: 12</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 5;">
+  <div class="symbol">In</div>
+  <div class="number">49</div>
+  <div class="tooltip"><strong>Indium</strong><br>Atomic Number: 49<br>Period: 5, Group: 13</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 5;">
+  <div class="symbol">Sn</div>
+  <div class="number">50</div>
+  <div class="tooltip"><strong>Tin</strong><br>Atomic Number: 50<br>Period: 5, Group: 14</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 5;">
+  <div class="symbol">Sb</div>
+  <div class="number">51</div>
+  <div class="tooltip"><strong>Antimony</strong><br>Atomic Number: 51<br>Period: 5, Group: 15</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 5;">
+  <div class="symbol">Te</div>
+  <div class="number">52</div>
+  <div class="tooltip"><strong>Tellurium</strong><br>Atomic Number: 52<br>Period: 5, Group: 16</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 5;">
+  <div class="symbol">I</div>
+  <div class="number">53</div>
+  <div class="tooltip"><strong>Iodine</strong><br>Atomic Number: 53<br>Period: 5, Group: 17</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 5;">
+  <div class="symbol">Xe</div>
+  <div class="number">54</div>
+  <div class="tooltip"><strong>Xenon</strong><br>Atomic Number: 54<br>Period: 5, Group: 18</div>
+</div>
+
+<!-- Period 6 -->
+<div class="element" style="grid-column: 1; grid-row: 6;">
+  <div class="symbol">Cs</div>
+  <div class="number">55</div>
+  <div class="tooltip"><strong>Cesium</strong><br>Atomic Number: 55<br>Period: 6, Group: 1</div>
+</div>
+<div class="element" style="grid-column: 2; grid-row: 6;">
+  <div class="symbol">Ba</div>
+  <div class="number">56</div>
+  <div class="tooltip"><strong>Barium</strong><br>Atomic Number: 56<br>Period: 6, Group: 2</div>
+</div>
+<!-- Lanthanides (period 6) placed separately starting at grid-row 8 -->
+<div class="element" style="grid-column: 4; grid-row: 6;">
+  <div class="symbol">Hf</div>
+  <div class="number">72</div>
+  <div class="tooltip"><strong>Hafnium</strong><br>Atomic Number: 72<br>Period: 6, Group: 4</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 6;">
+  <div class="symbol">Ta</div>
+  <div class="number">73</div>
+  <div class="tooltip"><strong>Tantalum</strong><br>Atomic Number: 73<br>Period: 6, Group: 5</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 6;">
+  <div class="symbol">W</div>
+  <div class="number">74</div>
+  <div class="tooltip"><strong>Tungsten</strong><br>Atomic Number: 74<br>Period: 6, Group: 6</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 6;">
+  <div class="symbol">Re</div>
+  <div class="number">75</div>
+  <div class="tooltip"><strong>Rhenium</strong><br>Atomic Number: 75<br>Period: 6, Group: 7</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 6;">
+  <div class="symbol">Os</div>
+  <div class="number">76</div>
+  <div class="tooltip"><strong>Osmium</strong><br>Atomic Number: 76<br>Period: 6, Group: 8</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 6;">
+  <div class="symbol">Ir</div>
+  <div class="number">77</div>
+  <div class="tooltip"><strong>Iridium</strong><br>Atomic Number: 77<br>Period: 6, Group: 9</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 6;">
+  <div class="symbol">Pt</div>
+  <div class="number">78</div>
+  <div class="tooltip"><strong>Platinum</strong><br>Atomic Number: 78<br>Period: 6, Group: 10</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 6;">
+  <div class="symbol">Au</div>
+  <div class="number">79</div>
+  <div class="tooltip"><strong>Gold</strong><br>Atomic Number: 79<br>Period: 6, Group: 11</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 6;">
+  <div class="symbol">Hg</div>
+  <div class="number">80</div>
+  <div class="tooltip"><strong>Mercury</strong><br>Atomic Number: 80<br>Period: 6, Group: 12</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 6;">
+  <div class="symbol">Tl</div>
+  <div class="number">81</div>
+  <div class="tooltip"><strong>Thallium</strong><br>Atomic Number: 81<br>Period: 6, Group: 13</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 6;">
+  <div class="symbol">Pb</div>
+  <div class="number">82</div>
+  <div class="tooltip"><strong>Lead</strong><br>Atomic Number: 82<br>Period: 6, Group: 14</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 6;">
+  <div class="symbol">Bi</div>
+  <div class="number">83</div>
+  <div class="tooltip"><strong>Bismuth</strong><br>Atomic Number: 83<br>Period: 6, Group: 15</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 6;">
+  <div class="symbol">Po</div>
+  <div class="number">84</div>
+  <div class="tooltip"><strong>Polonium</strong><br>Atomic Number: 84<br>Period: 6, Group: 16</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 6;">
+  <div class="symbol">At</div>
+  <div class="number">85</div>
+  <div class="tooltip"><strong>Astatine</strong><br>Atomic Number: 85<br>Period: 6, Group: 17</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 6;">
+  <div class="symbol">Rn</div>
+  <div class="number">86</div>
+  <div class="tooltip"><strong>Radon</strong><br>Atomic Number: 86<br>Period: 6, Group: 18</div>
+</div>
+
+<!-- Lanthanides - placed in separate row, row 8 -->
+<div class="element" style="grid-column: 4; grid-row: 8;">
+  <div class="symbol">La</div>
+  <div class="number">57</div>
+  <div class="tooltip"><strong>Lanthanum</strong><br>Atomic Number: 57<br>Period: 6, Group: f-block start</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 8;">
+  <div class="symbol">Ce</div>
+  <div class="number">58</div>
+  <div class="tooltip"><strong>Cerium</strong><br>Atomic Number: 58</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 8;">
+  <div class="symbol">Pr</div>
+  <div class="number">59</div>
+  <div class="tooltip"><strong>Praseodymium</strong><br>Atomic Number: 59</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 8;">
+  <div class="symbol">Nd</div>
+  <div class="number">60</div>
+  <div class="tooltip"><strong>Neodymium</strong><br>Atomic Number: 60</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 8;">
+  <div class="symbol">Pm</div>
+  <div class="number">61</div>
+  <div class="tooltip"><strong>Promethium</strong><br>Atomic Number: 61</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 8;">
+  <div class="symbol">Sm</div>
+  <div class="number">62</div>
+  <div class="tooltip"><strong>Samarium</strong><br>Atomic Number: 62</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 8;">
+  <div class="symbol">Eu</div>
+  <div class="number">63</div>
+  <div class="tooltip"><strong>Europium</strong><br>Atomic Number: 63</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 8;">
+  <div class="symbol">Gd</div>
+  <div class="number">64</div>
+  <div class="tooltip"><strong>Gadolinium</strong><br>Atomic Number: 64</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 8;">
+  <div class="symbol">Tb</div>
+  <div class="number">65</div>
+  <div class="tooltip"><strong>Terbium</strong><br>Atomic Number: 65</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 8;">
+  <div class="symbol">Dy</div>
+  <div class="number">66</div>
+  <div class="tooltip"><strong>Dysprosium</strong><br>Atomic Number: 66</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 8;">
+  <div class="symbol">Ho</div>
+  <div class="number">67</div>
+  <div class="tooltip"><strong>Holmium</strong><br>Atomic Number: 67</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 8;">
+  <div class="symbol">Er</div>
+  <div class="number">68</div>
+  <div class="tooltip"><strong>Erbium</strong><br>Atomic Number: 68</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 8;">
+  <div class="symbol">Tm</div>
+  <div class="number">69</div>
+  <div class="tooltip"><strong>Thulium</strong><br>Atomic Number: 69</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 8;">
+  <div class="symbol">Yb</div>
+  <div class="number">70</div>
+  <div class="tooltip"><strong>Ytterbium</strong><br>Atomic Number: 70</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 8;">
+  <div class="symbol">Lu</div>
+  <div class="number">71</div>
+  <div class="tooltip"><strong>Lutetium</strong><br>Atomic Number: 71</div>
+</div>
+
+<!-- Period 7 -->
+<div class="element" style="grid-column: 1; grid-row: 7;">
+  <div class="symbol">Fr</div>
+  <div class="number">87</div>
+  <div class="tooltip"><strong>Francium</strong><br>Atomic Number: 87<br>Period: 7, Group: 1</div>
+</div>
+<div class="element" style="grid-column: 2; grid-row: 7;">
+  <div class="symbol">Ra</div>
+  <div class="number">88</div>
+  <div class="tooltip"><strong>Radium</strong><br>Atomic Number: 88<br>Period: 7, Group: 2</div>
+</div>
+<!-- Actinides (period 7) placed separately starting at grid-row 9 -->
+<div class="element" style="grid-column: 4; grid-row: 7;">
+  <div class="symbol">Rf</div>
+  <div class="number">104</div>
+  <div class="tooltip"><strong>Rutherfordium</strong><br>Atomic Number: 104</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 7;">
+  <div class="symbol">Db</div>
+  <div class="number">105</div>
+  <div class="tooltip"><strong>Dubnium</strong><br>Atomic Number: 105</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 7;">
+  <div class="symbol">Sg</div>
+  <div class="number">106</div>
+  <div class="tooltip"><strong>Seaborgium</strong><br>Atomic Number: 106</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 7;">
+  <div class="symbol">Bh</div>
+  <div class="number">107</div>
+  <div class="tooltip"><strong>Bohrium</strong><br>Atomic Number: 107</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 7;">
+  <div class="symbol">Hs</div>
+  <div class="number">108</div>
+  <div class="tooltip"><strong>Hassium</strong><br>Atomic Number: 108</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 7;">
+  <div class="symbol">Mt</div>
+  <div class="number">109</div>
+  <div class="tooltip"><strong>Meitnerium</strong><br>Atomic Number: 109</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 7;">
+  <div class="symbol">Ds</div>
+  <div class="number">110</div>
+  <div class="tooltip"><strong>Darmstadtium</strong><br>Atomic Number: 110</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 7;">
+  <div class="symbol">Rg</div>
+  <div class="number">111</div>
+  <div class="tooltip"><strong>Roentgenium</strong><br>Atomic Number: 111</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 7;">
+  <div class="symbol">Cn</div>
+  <div class="number">112</div>
+  <div class="tooltip"><strong>Copernicium</strong><br>Atomic Number: 112</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 7;">
+  <div class="symbol">Nh</div>
+  <div class="number">113</div>
+  <div class="tooltip"><strong>Nihonium</strong><br>Atomic Number: 113</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 7;">
+  <div class="symbol">Fl</div>
+  <div class="number">114</div>
+  <div class="tooltip"><strong>Flerovium</strong><br>Atomic Number: 114</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 7;">
+  <div class="symbol">Mc</div>
+  <div class="number">115</div>
+  <div class="tooltip"><strong>Moscovium</strong><br>Atomic Number: 115</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 7;">
+  <div class="symbol">Lv</div>
+  <div class="number">116</div>
+  <div class="tooltip"><strong>Livermorium</strong><br>Atomic Number: 116</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 7;">
+  <div class="symbol">Ts</div>
+  <div class="number">117</div>
+  <div class="tooltip"><strong>Tennessine</strong><br>Atomic Number: 117</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 7;">
+  <div class="symbol">Og</div>
+  <div class="number">118</div>
+  <div class="tooltip"><strong>Oganesson</strong><br>Atomic Number: 118</div>
+</div>
+
+<!-- Actinides - placed in separate row, row 9 -->
+<div class="element" style="grid-column: 4; grid-row: 9;">
+  <div class="symbol">Ac</div>
+  <div class="number">89</div>
+  <div class="tooltip"><strong>Actinium</strong><br>Atomic Number: 89<br>Period: 7, Group: f-block start</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 9;">
+  <div class="symbol">Th</div>
+  <div class="number">90</div>
+  <div class="tooltip"><strong>Thorium</strong><br>Atomic Number: 90</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 9;">
+  <div class="symbol">Pa</div>
+  <div class="number">91</div>
+  <div class="tooltip"><strong>Protactinium</strong><br>Atomic Number: 91</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 9;">
+  <div class="symbol">U</div>
+  <div class="number">92</div>
+  <div class="tooltip"><strong>Uranium</strong><br>Atomic Number: 92</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 9;">
+  <div class="symbol">Np</div>
+  <div class="number">93</div>
+  <div class="tooltip"><strong>Neptunium</strong><br>Atomic Number: 93</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 9;">
+  <div class="symbol">Pu</div>
+  <div class="number">94</div>
+  <div class="tooltip"><strong>Plutonium</strong><br>Atomic Number: 94</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 9;">
+  <div class="symbol">Am</div>
+  <div class="number">95</div>
+  <div class="tooltip"><strong>Americium</strong><br>Atomic Number: 95</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 9;">
+  <div class="symbol">Cm</div>
+  <div class="number">96</div>
+  <div class="tooltip"><strong>Curium</strong><br>Atomic Number: 96</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 9;">
+  <div class="symbol">Bk</div>
+  <div class="number">97</div>
+  <div class="tooltip"><strong>Berkelium</strong><br>Atomic Number: 97</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 9;">
+  <div class="symbol">Cf</div>
+  <div class="number">98</div>
+  <div class="tooltip"><strong>Californium</strong><br>Atomic Number: 98</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 9;">
+  <div class="symbol">Es</div>
+  <div class="number">99</div>
+  <div class="tooltip"><strong>Einsteinium</strong><br>Atomic Number: 99</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 9;">
+  <div class="symbol">Fm</div>
+  <div class="number">100</div>
+  <div class="tooltip"><strong>Fermium</strong><br>Atomic Number: 100</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 9;">
+  <div class="symbol">Md</div>
+  <div class="number">101</div>
+  <div class="tooltip"><strong>Mendelevium</strong><br>Atomic Number: 101</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 9;">
+  <div class="symbol">No</div>
+  <div class="number">102</div>
+  <div class="tooltip"><strong>Nobelium</strong><br>Atomic Number: 102</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 9;">
+  <div class="symbol">Lr</div>
+  <div class="number">103</div>
+  <div class="tooltip"><strong>Lawrencium</strong><br>Atomic Number: 103</div>
+</div>
+<!-- Lanthanides - placed in grid-row 8, columns 4 to 18 -->
+<div class="element" style="grid-column: 4; grid-row: 8;">
+  <div class="symbol">La</div>
+  <div class="number">57</div>
+  <div class="tooltip"><strong>Lanthum</strong><br>Atomic Number: 57<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 5; grid-row: 8;">
+  <div class="symbol">Ce</div>
+  <div class="number">58</div>
+  <div class="tooltip"><strong>Cerium</strong><br>Atomic Number: 58<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 6; grid-row: 8;">
+  <div class="symbol">Pr</div>
+  <div class="number">59</div>
+  <div class="tooltip"><strong>Praseodymium</strong><br>Atomic Number: 59<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 7; grid-row: 8;">
+  <div class="symbol">Nd</div>
+  <div class="number">60</div>
+  <div class="tooltip"><strong>Neodymium</strong><br>Atomic Number: 60<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 8; grid-row: 8;">
+  <div class="symbol">Pm</div>
+  <div class="number">61</div>
+  <div class="tooltip"><strong>Promethium</strong><br>Atomic Number: 61<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 9; grid-row: 8;">
+  <div class="symbol">Sm</div>
+  <div class="number">62</div>
+  <div class="tooltip"><strong>Samarium</strong><br>Atomic Number: 62<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 10; grid-row: 8;">
+  <div class="symbol">Eu</div>
+  <div class="number">63</div>
+  <div class="tooltip"><strong>Europium</strong><br>Atomic Number: 63<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 11; grid-row: 8;">
+  <div class="symbol">Gd</div>
+  <div class="number">64</div>
+  <div class="tooltip"><strong>Gadolinium</strong><br>Atomic Number: 64<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 12; grid-row: 8;">
+  <div class="symbol">Tb</div>
+  <div class="number">65</div>
+  <div class="tooltip"><strong>Terbium</strong><br>Atomic Number: 65<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 13; grid-row: 8;">
+  <div class="symbol">Dy</div>
+  <div class="number">66</div>
+  <div class="tooltip"><strong>Dysprosium</strong><br>Atomic Number: 66<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 14; grid-row: 8;">
+  <div class="symbol">Ho</div>
+  <div class="number">67</div>
+  <div class="tooltip"><strong>Holmium</strong><br>Atomic Number: 67<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 15; grid-row: 8;">
+  <div class="symbol">Er</div>
+  <div class="number">68</div>
+  <div class="tooltip"><strong>Erbium</strong><br>Atomic Number: 68<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 16; grid-row: 8;">
+  <div class="symbol">Tm</div>
+  <div class="number">69</div>
+  <div class="tooltip"><strong>Thulium</strong><br>Atomic Number: 69<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 17; grid-row: 8;">
+  <div class="symbol">Yb</div>
+  <div class="number">70</div>
+  <div class="tooltip"><strong>Ytterbium</strong><br>Atomic Number: 70<br>Period: 6, Group: —</div>
+</div>
+<div class="element" style="grid-column: 18; grid-row: 8;">
+  <div class="symbol">Lu</div>
+  <div class="number">71</div>
+  <div class="tooltip"><strong>Lutetium</strong><br>Atomic Number: 71<br>Period: 6, Group: 3</div>
+</div>
+  <!-- End of all element divs here -->
+
+</div> <!-- Closing the main periodic-grid container -->
 
 </body>
 </html>
+
