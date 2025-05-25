@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Modern Periodic Table</title>
 <style>
-  /* Reset */
   * {
     box-sizing: border-box;
   }
@@ -26,16 +25,12 @@
     font-size: 2.5rem;
     letter-spacing: 4px;
   }
-
-  /* Grid container simulating periodic table */
   #periodic-grid {
     display: grid;
     grid-template-columns: repeat(18, 60px);
     grid-auto-rows: 60px;
     gap: 5px;
   }
-
-  /* Element boxes */
   .element {
     position: relative;
     background: #ffffff22;
@@ -49,39 +44,39 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: visible;
+    overflow: visible; /* Important: so tooltip can overflow */
+    z-index: 1; /* base */
   }
-
   .element .symbol {
     font-size: 22px;
     margin-bottom: 4px;
   }
-
   .element .number {
     font-size: 12px;
     opacity: 0.7;
   }
-
-  /* Tooltip styling */
   .tooltip {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: -80px;  /* position above the element box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    min-height: 100px;
     background: rgba(128, 128, 128, 0.85);
     color: white;
-    border-radius: 8px;
-    padding: 8px;
-    font-size: 13px;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
     text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 10;
     line-height: 1.3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    box-shadow: 0 0 15px #ff4081bb;
+    z-index: 1000;  /* on top */
+    user-select: text;
+    white-space: normal;
   }
-
   .element:hover .tooltip {
     opacity: 1;
     pointer-events: auto;
@@ -94,7 +89,6 @@
 
 <div id="periodic-grid">
 
-  <!-- Example element with grid placement -->
   <div class="element" style="grid-column: 1; grid-row: 1;">
     <div class="symbol">H</div>
     <div class="number">1</div>
@@ -115,102 +109,9 @@
     </div>
   </div>
 
-  <!-- Add all other elements similarly: set grid-column and grid-row accordingly -->
+  <!-- Add more elements similarly -->
 
-  <!-- Example: Lithium -->
-  <div class="element" style="grid-column: 1; grid-row: 2;">
-    <div class="symbol">Li</div>
-    <div class="number">3</div>
-    <div class="tooltip">
-      <strong>Lithium</strong><br />
-      Atomic Number: 3<br />
-      Row: 2, Column: 1
-    </div>
-  </div>
-
-  <!-- Beryllium -->
-  <div class="element" style="grid-column: 2; grid-row: 2;">
-    <div class="symbol">Be</div>
-    <div class="number">4</div>
-    <div class="tooltip">
-      <strong>Beryllium</strong><br />
-      Atomic Number: 4<br />
-      Row: 2, Column: 2
-    </div>
-  </div>
-
-  <!-- Boron -->
-  <div class="element" style="grid-column: 13; grid-row: 2;">
-    <div class="symbol">B</div>
-    <div class="number">5</div>
-    <div class="tooltip">
-      <strong>Boron</strong><br />
-      Atomic Number: 5<br />
-      Row: 2, Column: 13
-    </div>
-  </div>
-
-  <!-- Carbon -->
-  <div class="element" style="grid-column: 14; grid-row: 2;">
-    <div class="symbol">C</div>
-    <div class="number">6</div>
-    <div class="tooltip">
-      <strong>Carbon</strong><br />
-      Atomic Number: 6<br />
-      Row: 2, Column: 14
-    </div>
-  </div>
-
-  <!-- Nitrogen -->
-  <div class="element" style="grid-column: 15; grid-row: 2;">
-    <div class="symbol">N</div>
-    <div class="number">7</div>
-    <div class="tooltip">
-      <strong>Nitrogen</strong><br />
-      Atomic Number: 7<br />
-      Row: 2, Column: 15
-    </div>
-  </div>
-
-  <!-- Oxygen -->
-  <div class="element" style="grid-column: 16; grid-row: 2;">
-    <div class="symbol">O</div>
-    <div class="number">8</div>
-    <div class="tooltip">
-      <strong>Oxygen</strong><br />
-      Atomic Number: 8<br />
-      Row: 2, Column: 16
-    </div>
-  </div>
-
-  <!-- Fluorine -->
-  <div class="element" style="grid-column: 17; grid-row: 2;">
-    <div class="symbol">F</div>
-    <div class="number">9</div>
-    <div class="tooltip">
-      <strong>Fluorine</strong><br />
-      Atomic Number: 9<br />
-      Row: 2, Column: 17
-    </div>
-  </div>
-
-  <!-- Neon -->
-  <div class="element" style="grid-column: 18; grid-row: 2;">
-    <div class="symbol">Ne</div>
-    <div class="number">10</div>
-    <div class="tooltip">
-      <strong>Neon</strong><br />
-      Atomic Number: 10<br />
-      Row: 2, Column: 18
-    </div>
-  </div>
-
-  <!-- Add more elements here following their grid positions and with the same structure -->
 </div>
-
-<script>
-  // No JavaScript needed since tooltip is pure CSS hover-based
-</script>
 
 </body>
 </html>
