@@ -1,83 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Periodic Element Drag</title>
+  <meta charset="UTF-8">
+  <title>Periodic Elements Info</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #fafafa;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
+      background: linear-gradient(135deg, #1a001a, #330033, #660022, #990000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
     }
 
     .periodic-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-      gap: 10px;
-      max-width: 600px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      width: 100%;
     }
 
     .element-box {
-      width: 60px;
-      height: 60px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
+      position: relative;
+      background: #ffffff22;
+      border: 2px solid #ff4081;
+      border-radius: 10px;
       text-align: center;
-      line-height: 60px;
-      font-weight: bold;
-      background-color: #e0f7fa;
-      cursor: move;
+      padding: 20px 10px;
+      cursor: default;
       transition: transform 0.2s;
     }
 
-    .element-box:active {
-      transform: scale(1.1);
+    .element-box:hover {
+      transform: scale(1.05);
+    }
+
+    .symbol {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: #222;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      z-index: 10;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .element-box:hover .tooltip {
+      display: block;
+    }
+
+    .tooltip strong {
+      color: #ff4081;
     }
   </style>
 </head>
 <body>
 
-  <h2>Drag & Drop Periodic Elements</h2>
+  <div class="periodic-grid">
+    <!-- ✅ Add more elements below like this -->
+    <div class="element-box">
+      <div class="symbol">H</div>
+      <div class="tooltip">
+        <strong>Hydrogen</strong><br>
+        Atomic No: 1<br>
+        Group: 1<br>
+        Period: 1<br>
+        Category: Non-metal
+      </div>
+    </div>
 
-  <div id="periodic-grid" class="periodic-grid">
-    <!-- ✅ Just Add New Elements Like These -->
-    <div class="element-box" id="H" draggable="true">H</div>
-    <div class="element-box" id="He" draggable="true">He</div>
-    <div class="element-box" id="Li" draggable="true">Li</div>
-    <div class="element-box" id="Be" draggable="true">Be</div>
+    <div class="element-box">
+      <div class="symbol">He</div>
+      <div class="tooltip">
+        <strong>Helium</strong><br>
+        Atomic No: 2<br>
+        Group: 18<br>
+        Period: 1<br>
+        Category: Noble gas
+      </div>
+    </div>
+
+    <div class="element-box">
+      <div class="symbol">Li</div>
+      <div class="tooltip">
+        <strong>Lithium</strong><br>
+        Atomic No: 3<br>
+        Group: 1<br>
+        Period: 2<br>
+        Category: Alkali metal
+      </div>
+    </div>
+
+    <div class="element-box">
+      <div class="symbol">Be</div>
+      <div class="tooltip">
+        <strong>Beryllium</strong><br>
+        Atomic No: 4<br>
+        Group: 2<br>
+        Period: 2<br>
+        Category: Alkaline earth metal
+      </div>
+    </div>
   </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const grid = document.getElementById("periodic-grid");
-
-      // Make all boxes draggable
-      grid.querySelectorAll(".element-box").forEach(box => {
-        box.addEventListener("dragstart", e => {
-          e.dataTransfer.setData("text/plain", e.target.id);
-        });
-      });
-
-      // Allow dropping on the grid
-      grid.addEventListener("dragover", e => {
-        e.preventDefault();
-      });
-
-      grid.addEventListener("drop", e => {
-        e.preventDefault();
-        const id = e.dataTransfer.getData("text/plain");
-        const dragged = document.getElementById(id);
-        if (dragged) grid.appendChild(dragged);
-      });
-    });
-  </script>
 
 </body>
 </html>
