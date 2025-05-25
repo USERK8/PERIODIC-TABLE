@@ -1,232 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Modern Periodic Table</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a001a, #330033, #660022, #990000);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modern Periodic Table</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #28002b, #700059, #1a0000, #a30000);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
 
-    h1 {
-      color: #ff4081;
-      margin-bottom: 30px;
-      font-size: 2.5rem;
-    }
+  /* Grid container simulating periodic table */
+  #periodic-grid {
+    display: grid;
+    grid-template-columns: repeat(18, 60px);
+    grid-auto-rows: 60px;
+    gap: 5px;
+  }
 
-    .periodic-table {
-      display: grid;
-      grid-template-columns: repeat(18, 60px);
-      grid-template-rows: repeat(7, 60px);
-      gap: 6px;
-    }
+  /* Element boxes */
+  .element {
+    position: relative;
+    background: #ffffff22;
+    border: 2px solid #ff4081;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    user-select: none;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: visible;
+  }
 
-    .element {
-      position: relative;
-      background: #ffffff22;
-      border: 2px solid #ff4081;
-      border-radius: 8px;
-      text-align: center;
-      padding-top: 8px;
-      font-size: 14px;
-      cursor: default;
-      user-select: none;
-      overflow: visible; /* important for tooltip visibility */
-    }
+  .element .symbol {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
 
-    .element .symbol {
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      position: relative;
-      z-index: 1; /* make sure symbol is below tooltip */
-    }
+  .element .number {
+    font-size: 12px;
+    opacity: 0.7;
+  }
 
-    /* Tooltip */
-    .tooltip {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(128, 128, 128, 0.85); /* semi-transparent grey */
-      color: white;
-      padding: 8px;
-      border-radius: 8px;
-      font-size: 13px;
-      text-align: left;
-      z-index: 10;
-      box-sizing: border-box;
-      /* center text vertically */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      pointer-events: none; /* tooltip does not interfere with mouse */
-    }
+  /* Tooltip styling */
+  .tooltip {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(128, 128, 128, 0.85);
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 13px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    line-height: 1.3;
+  }
 
-    .element:hover .tooltip {
-      display: flex;
-      pointer-events: auto; /* enable pointer events on hover */
-    }
-
-    /* Specific positions */
-    .H     { grid-column: 1;  grid-row: 1; }
-    .He    { grid-column: 18; grid-row: 1; }
-    .Li    { grid-column: 1;  grid-row: 2; }
-    .Be    { grid-column: 2;  grid-row: 2; }
-    .B     { grid-column: 13; grid-row: 2; }
-    .C     { grid-column: 14; grid-row: 2; }
-    .N     { grid-column: 15; grid-row: 2; }
-    .O     { grid-column: 16; grid-row: 2; }
-    .F     { grid-column: 17; grid-row: 2; }
-    .Ne    { grid-column: 18; grid-row: 2; }
-  </style>
+  .element:hover .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
 </head>
 <body>
 
-  <h1>Modern Periodic Table</h1>
+<h1>Modern Periodic Table</h1>
 
-  <div class="periodic-table">
+<div id="periodic-grid">
 
-    <!-- Hydrogen -->
-    <div class="element H" data-row="1" data-col="1">
-      <div class="symbol">H</div>
-      <div class="tooltip">
-        <strong>Hydrogen</strong><br>
-        Atomic No: 1<br>
-        Group: 1<br>
-        Period: 1<br>
-        Category: Non-metal<br>
-        Row: 1, Column: 1
-      </div>
+  <!-- Example element with grid placement -->
+  <div class="element" style="grid-column: 1; grid-row: 1;">
+    <div class="symbol">H</div>
+    <div class="number">1</div>
+    <div class="tooltip">
+      <strong>Hydrogen</strong><br />
+      Atomic Number: 1<br />
+      Row: 1, Column: 1
     </div>
-
-    <!-- Helium -->
-    <div class="element He" data-row="1" data-col="18">
-      <div class="symbol">He</div>
-      <div class="tooltip">
-        <strong>Helium</strong><br>
-        Atomic No: 2<br>
-        Group: 18<br>
-        Period: 1<br>
-        Category: Noble gas<br>
-        Row: 1, Column: 18
-      </div>
-    </div>
-
-    <!-- Lithium -->
-    <div class="element Li" data-row="2" data-col="1">
-      <div class="symbol">Li</div>
-      <div class="tooltip">
-        <strong>Lithium</strong><br>
-        Atomic No: 3<br>
-        Group: 1<br>
-        Period: 2<br>
-        Category: Alkali metal<br>
-        Row: 2, Column: 1
-      </div>
-    </div>
-
-    <!-- Beryllium -->
-    <div class="element Be" data-row="2" data-col="2">
-      <div class="symbol">Be</div>
-      <div class="tooltip">
-        <strong>Beryllium</strong><br>
-        Atomic No: 4<br>
-        Group: 2<br>
-        Period: 2<br>
-        Category: Alkaline earth metal<br>
-        Row: 2, Column: 2
-      </div>
-    </div>
-
-    <!-- Boron -->
-    <div class="element B" data-row="2" data-col="13">
-      <div class="symbol">B</div>
-      <div class="tooltip">
-        <strong>Boron</strong><br>
-        Atomic No: 5<br>
-        Group: 13<br>
-        Period: 2<br>
-        Category: Metalloid<br>
-        Row: 2, Column: 13
-      </div>
-    </div>
-
-    <!-- Carbon -->
-    <div class="element C" data-row="2" data-col="14">
-      <div class="symbol">C</div>
-      <div class="tooltip">
-        <strong>Carbon</strong><br>
-        Atomic No: 6<br>
-        Group: 14<br>
-        Period: 2<br>
-        Category: Non-metal<br>
-        Row: 2, Column: 14
-      </div>
-    </div>
-
-    <!-- Nitrogen -->
-    <div class="element N" data-row="2" data-col="15">
-      <div class="symbol">N</div>
-      <div class="tooltip">
-        <strong>Nitrogen</strong><br>
-        Atomic No: 7<br>
-        Group: 15<br>
-        Period: 2<br>
-        Category: Non-metal<br>
-        Row: 2, Column: 15
-      </div>
-    </div>
-
-    <!-- Oxygen -->
-    <div class="element O" data-row="2" data-col="16">
-      <div class="symbol">O</div>
-      <div class="tooltip">
-        <strong>Oxygen</strong><br>
-        Atomic No: 8<br>
-        Group: 16<br>
-        Period: 2<br>
-        Category: Non-metal<br>
-        Row: 2, Column: 16
-      </div>
-    </div>
-
-    <!-- Fluorine -->
-    <div class="element F" data-row="2" data-col="17">
-      <div class="symbol">F</div>
-      <div class="tooltip">
-        <strong>Fluorine</strong><br>
-        Atomic No: 9<br>
-        Group: 17<br>
-        Period: 2<br>
-        Category: Halogen<br>
-        Row: 2, Column: 17
-      </div>
-    </div>
-
-    <!-- Neon -->
-    <div class="element Ne" data-row="2" data-col="18">
-      <div class="symbol">Ne</div>
-      <div class="tooltip">
-        <strong>Neon</strong><br>
-        Atomic No: 10<br>
-        Group: 18<br>
-        Period: 2<br>
-        Category: Noble gas<br>
-        Row: 2, Column: 18
-      </div>
-    </div>
-
   </div>
+
+  <div class="element" style="grid-column: 18; grid-row: 1;">
+    <div class="symbol">He</div>
+    <div class="number">2</div>
+    <div class="tooltip">
+      <strong>Helium</strong><br />
+      Atomic Number: 2<br />
+      Row: 1, Column: 18
+    </div>
+  </div>
+
+  <!-- Add all other elements similarly: set grid-column and grid-row accordingly -->
+
+  <!-- Example: Lithium -->
+  <div class="element" style="grid-column: 1; grid-row: 2;">
+    <div class="symbol">Li</div>
+    <div class="number">3</div>
+    <div class="tooltip">
+      <strong>Lithium</strong><br />
+      Atomic Number: 3<br />
+      Row: 2, Column: 1
+    </div>
+  </div>
+
+  <!-- Beryllium -->
+  <div class="element" style="grid-column: 2; grid-row: 2;">
+    <div class="symbol">Be</div>
+    <div class="number">4</div>
+    <div class="tooltip">
+      <strong>Beryllium</strong><br />
+      Atomic Number: 4<br />
+      Row: 2, Column: 2
+    </div>
+  </div>
+
+  <!-- Boron -->
+  <div class="element" style="grid-column: 13; grid-row: 2;">
+    <div class="symbol">B</div>
+    <div class="number">5</div>
+    <div class="tooltip">
+      <strong>Boron</strong><br />
+      Atomic Number: 5<br />
+      Row: 2, Column: 13
+    </div>
+  </div>
+
+  <!-- Carbon -->
+  <div class="element" style="grid-column: 14; grid-row: 2;">
+    <div class="symbol">C</div>
+    <div class="number">6</div>
+    <div class="tooltip">
+      <strong>Carbon</strong><br />
+      Atomic Number: 6<br />
+      Row: 2, Column: 14
+    </div>
+  </div>
+
+  <!-- Nitrogen -->
+  <div class="element" style="grid-column: 15; grid-row: 2;">
+    <div class="symbol">N</div>
+    <div class="number">7</div>
+    <div class="tooltip">
+      <strong>Nitrogen</strong><br />
+      Atomic Number: 7<br />
+      Row: 2, Column: 15
+    </div>
+  </div>
+
+  <!-- Oxygen -->
+  <div class="element" style="grid-column: 16; grid-row: 2;">
+    <div class="symbol">O</div>
+    <div class="number">8</div>
+    <div class="tooltip">
+      <strong>Oxygen</strong><br />
+      Atomic Number: 8<br />
+      Row: 2, Column: 16
+    </div>
+  </div>
+
+  <!-- Fluorine -->
+  <div class="element" style="grid-column: 17; grid-row: 2;">
+    <div class="symbol">F</div>
+    <div class="number">9</div>
+    <div class="tooltip">
+      <strong>Fluorine</strong><br />
+      Atomic Number: 9<br />
+      Row: 2, Column: 17
+    </div>
+  </div>
+
+  <!-- Neon -->
+  <div class="element" style="grid-column: 18; grid-row: 2;">
+    <div class="symbol">Ne</div>
+    <div class="number">10</div>
+    <div class="tooltip">
+      <strong>Neon</strong><br />
+      Atomic Number: 10<br />
+      Row: 2, Column: 18
+    </div>
+  </div>
+
+  <!-- Add more elements here following their grid positions and with the same structure -->
+</div>
+
+<script>
+  // No JavaScript needed since tooltip is pure CSS hover-based
+</script>
 
 </body>
 </html>
