@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Periodic Element Drag</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #fafafa;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .periodic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 10px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .element-box {
+      width: 60px;
+      height: 60px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+      background-color: #e0f7fa;
+      cursor: move;
+      transition: transform 0.2s;
+    }
+
+    .element-box:active {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Drag & Drop Periodic Elements</h2>
+
+  <div id="periodic-grid" class="periodic-grid">
+    <!-- ✅ Just Add New Elements Like These -->
+    <div class="element-box" id="H" draggable="true">H</div>
+    <div class="element-box" id="He" draggable="true">He</div>
+    <div class="element-box" id="Li" draggable="true">Li</div>
+    <div class="element-box" id="Be" draggable="true">Be</div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("periodic-grid");
+
+      // Make all boxes draggable
+      grid.querySelectorAll(".element-box").forEach(box => {
+        box.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("text/plain", e.target.id);
+        });
+      });
+
+      // Allow dropping on the grid
+      grid.addEventListener("dragover", e => {
+        e.preventDefault();
+      });
+
+      grid.addEventListener("drop", e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData("text/plain");
+        const dragged = document.getElementById(id);
+        if (dragged) grid.appendChild(dragged);
+      });
+    });
+  </script>
+
+</body>
+</html>
